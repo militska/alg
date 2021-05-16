@@ -5,28 +5,38 @@ import "fmt"
 func main() {
 	fmt.Print("hi! \n")
 	x := []int8{3, 20, 5, 32, 1, 16, 98, 76, 2}
-	sortArray := sort(x)
+	var iteration int = 0
+
+	sortArray := sortBubble(x, iteration)
 	fmt.Print(sortArray)
 }
 
-func sort(x []int8) []int8 {
-	var needRec bool = false
-	var iteration int8 = 0
-	for i, v := range x {
-		current := x[i]
-		preview := x[i]
-		if i != 0 {
-			preview = x[i-1]
-			if current > preview {
-				needRec = true
-				iteration += 1
-				x[i] = x[i-1]
-				x[i-1] = v
+func sortBubble(x []int8, iteration int) []int8 {
+	for {
+		needRepeat := false
+		internalIter := 0
+		for i, v := range x {
+			preview := x[i]
+			if i != 0 {
+				preview = x[i-1]
+				if v > preview {
+					internalIter += 1
+					needRepeat = true
+					x[i], x[i-1] = x[i-1], v
+				}
 			}
 		}
+		if internalIter != 0 {
+			iteration += 1
+		}
+		fmt.Printf("проход : %d \n", iteration)
+
+		if needRepeat == true {
+			continue
+		}
+		break
 	}
-	if needRec {
-		sort(x)
-	}
+
+	fmt.Printf("Количество проходов : %d \n", iteration)
 	return x
 }
