@@ -19,7 +19,7 @@ func sortBubble(x []int8) []int8 {
 			if i != 0 {
 				prevKey = i - 1
 			}
-			if v < x[prevKey] {
+			if v > x[prevKey] {
 				needRepeat = true
 				x[i], x[i-1] = x[i-1], v
 			}
