@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	fmt.Print("hi! \n")
-	x := []int8{3, 20, 5, 32, 1, 16, 98, 76, 2}
+	x := []int8{3, 20, 5, 32, 1, 16, 98, 76, 2, 2}
 
 	sortArray := sortBubble(x)
 	fmt.Print(sortArray)
